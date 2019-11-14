@@ -7,6 +7,7 @@ import 'package:carigari/screens/contactUs.dart';
 import 'package:carigari/screens/privacy.dart';
 import 'package:carigari/screens/splashScreen.dart';
 import 'package:carigari/screens/subcategory.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart' ;
 import 'package:flutter/material.dart' as prefix0;
@@ -79,6 +80,40 @@ class _HomeScreenState extends State<HomeScreen>
   //   );
   // }
 
+  Widget CarouselImages(){
+    return new Container(
+        color: Colors.green,
+        child: new CarouselSlider(
+          enlargeCenterPage: true,
+          autoPlay: true,
+          pauseAutoPlayOnTouch: Duration(seconds: 5),
+          height: MediaQuery.of(context).size.height/3,
+          items:[
+              'https://www.woodenstreet.com/images/furniture-bangalore/noida/image-new3.jpg',
+              'https://www.woodenstreet.com/images/furniture-bangalore/noida/image-new2.jpg',
+              'https://www.woodenstreet.com/images/furniture-bangalore/noida/image-new4.jpg',
+              'https://www.woodenstreet.com/images/furniture-bangalore/noida/image-new5.jpg',
+              'https://www.woodenstreet.com/images/furniture-bangalore/noida/image-new6.jpg'
+              // 'http://carigarifurniture.com/product_images/x/2d5d9976_8c0a_40b2_a6f6_5002b7d44341_1___01341_thumb.jpg',
+              // 'http://carigarifurniture.com/product_images/u/img_1942__56042_thumb.jpg',
+              // 'http://carigarifurniture.com/product_images/c/img_2162__63286_thumb.jpg'
+          ].map((i) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.symmetric(horizontal: 10.0),
+                    decoration: BoxDecoration(color: Colors.amber),
+                    child: GestureDetector(
+                        child: Image.network(i, fit: BoxFit.fill,height: MediaQuery.of(context).size.width,),
+                        onTap: () {
+                          // callSnackBar("clicked"+ i+"image",2);
+                        }));
+              },
+            );
+          }).toList(),
+        ));  }
+
 
 
 
@@ -139,8 +174,8 @@ class _HomeScreenState extends State<HomeScreen>
       child:Center(
         child:Column(children:<Widget>
         [
-
-           ShowImage("logo"),
+          CarouselImages(),
+          //  ShowImage("logo"),
            
           
           //  Text("About\n",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5),),
@@ -155,17 +190,17 @@ class _HomeScreenState extends State<HomeScreen>
           //       // launch("https://in.linkedin.com/in/jaya-prakash-veldanda-756b48179"),
           //     ),
           //  CallForcategoryDetails(),
-            Text("\n\n"),
-               RaisedButton(
-              color: Colors.orange,
-            child: Text("Subscription"),
-            onPressed: ()
-            {
-              // show();
-              Navigator.pushNamed(context, 'Testing');
+          //   Text("\n\n"),
+          //      RaisedButton(
+          //     color: Colors.orange,
+          //   child: Text("Subscription"),
+          //   onPressed: ()
+          //   {
+          //     // show();
+          //     Navigator.pushNamed(context, 'Testing');
               
-            },
-          ),
+          //   },
+          // ),
           Text("\nSelect by Category",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2,color: Colors.brown),),
           Expanded(
             child: category.length == 0
@@ -184,18 +219,22 @@ class _HomeScreenState extends State<HomeScreen>
                       title: Text(category[index].data['a']),
                       subtitle: Text("Price Starts from ₹ "+category[index].data['price']),
                       // dense: true,
-                      onLongPress: (){
-                        //  CategoryData(index);
-                        Navigator.pushNamed(context, "ContactForm");
-                      },
                       onTap: (){
-                        print("clicked"+category[index].data['a']);
-                        // CategoryData();
-                        // Navigator.pushNamed(context,"CategoryData");
-                        CategoryData(index);
-                        print("clicked 2 nd tinem  "+category[index].data['a']);
-                        
+                        Navigator.pushNamed(context,"ContactUs");
                       },
+                      // onLongPress: (){
+                      //   //  CategoryData(index);
+                      //   Navigator.pushNamed(context, "ContactForm");
+                      // },
+                      // onTap: (){
+                      //   print("clicked"+category[index].data['a']);
+                      //   // CategoryData();
+                      //   // Navigator.pushNamed(context,"CategoryData");
+                      //   // CategoryData(index);
+                      //   Navigator.pushNamed(context,"Account");
+                      //   print("clicked 2 nd tinem  "+category[index].data['a']);
+                        
+                      // },
                       // onTap:(){
                       //   print("clicked"+category[index].data['a']);
                       //   msg=category[index].data['a'];

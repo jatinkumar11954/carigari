@@ -2,6 +2,7 @@ import 'package:carigari/Arrangements/sizeModification.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
+import 'package:carigari/Arrangements/variables.dart' as global;
 
 class PhoneLogin extends StatefulWidget{
   @override
@@ -33,11 +34,14 @@ class _PhoneLoginState extends State<PhoneLogin> {
   String verificationId;
 
   Future<void> verifyPhone() async{
-
+    print("in phone verify method");
     final PhoneCodeSent smsCodeSent =(String verId,[int forceCodeResend]){
       this.verificationId=verId;
       smsCodeDialog(context).then((value){
         print("signed in");
+        global.Phone=phoneNo;
+        print(global.Phone);
+        
       });
     };
 
@@ -79,7 +83,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
           title: Text("Please Enter SMS Code"),
           titlePadding: EdgeInsets.all(20.0),
           content:TextFormField(
-            // maxLength: 6,
+            maxLength: 6,
              decoration: InputDecoration(
                             //  labelStyle:textStyle,
                             labelText: "SMS Code",
@@ -150,6 +154,7 @@ if (value.length!=6 || value.length==null) {
       callSnackBar("You are signing in please wait !!");
                 FirebaseAuth.instance.currentUser().then((user){
                   if(user!=null){
+                    global.Phone=phoneNo;
                     Navigator.of(context).pop();
                     Navigator.pushReplacementNamed(context,'HomeScreen');
                   }

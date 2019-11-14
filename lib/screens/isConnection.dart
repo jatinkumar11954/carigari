@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:carigari/screens/Data/ProfileEdit.dart';
 import 'package:carigari/screens/Data/about.dart';
 import 'package:carigari/screens/Data/details.dart';
 import 'package:carigari/screens/Data/notification.dart' as prefix0;
@@ -112,6 +113,7 @@ class _IsConnection extends State<IsConnection> {
         'Logout': (BuildContext context) => new Logout(),
         'Testing':(BuildContext context) => new Test(),
         'About':(BuildContext context)=> new About(),
+        'ProfileEdit':(BuildContext context) => new ProfileEdit(),
 
     },
   );

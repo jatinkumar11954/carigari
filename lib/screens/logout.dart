@@ -36,7 +36,7 @@ class _LogoutState extends State<Logout> {
             new FlatButton(
               child: new Text("YES, EXIT"),
               onPressed: () {
-                
+                print("cliked for log out yes");
                  FirebaseAuth.instance
                   .signOut()
                   .then((result) =>

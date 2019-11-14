@@ -82,11 +82,14 @@ Widget theDrawer(BuildContext context)
                                .then((result) =>
                                   //  Navigator.pushReplacementNamed(context, "Splash")
                                   
-                                   Navigator.pushReplacementNamed(context, "ScreenSelection")
+                                  //  Navigator.pushReplacementNamed(context, "ScreenSelection")
+                                  null
                                    )
                                .catchError((err) => print(err));  
                 // exit(0);
-                Navigator.of(context).pop();
+              print("after");
+                Navigator.pushReplacementNamed(context, "ScreenSelection");
+                print("success");
               },
             ),
             
