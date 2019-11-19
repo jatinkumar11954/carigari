@@ -35,7 +35,7 @@ class _SplashState extends State<Splash> {
       fit: StackFit.expand,
         children: <Widget>[
             new SplashScreen(
-                seconds: 4,
+                seconds: 1,
                 backgroundColor: Colors.brown,
                 image: Image.asset('images/logo.png'),
                 photoSize:  SizeConfig.blockSizeVertical*20.0,

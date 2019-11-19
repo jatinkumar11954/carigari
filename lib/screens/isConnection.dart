@@ -4,6 +4,7 @@ import 'package:carigari/screens/Data/ProfileEdit.dart';
 import 'package:carigari/screens/Data/about.dart';
 import 'package:carigari/screens/Data/details.dart';
 import 'package:carigari/screens/Data/notification.dart' as prefix0;
+import 'package:carigari/screens/subcategory.dart';
 import 'package:carigari/screens/testforcategory.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:carigari/Arrangements/sizeModification.dart';
@@ -114,6 +115,8 @@ class _IsConnection extends State<IsConnection> {
         'Testing':(BuildContext context) => new Test(),
         'About':(BuildContext context)=> new About(),
         'ProfileEdit':(BuildContext context) => new ProfileEdit(),
+        'SubCategory':(BuildContext context) => new SubCategory(),
+
 
     },
   );

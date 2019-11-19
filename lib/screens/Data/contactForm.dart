@@ -306,7 +306,7 @@ class _ContactFormState extends State<ContactForm> {
                   //     .whenComplete(() =>
                   //     Navigator.of(context).pushNamed("HomeScreen")
                   // );
-                                    callSnackBar("Submitting Your contact form!!!");
+                                    callSnackBar("Submitting !!!");
 
                                       Firestore.instance
                                       .collection('Contact Form Data')

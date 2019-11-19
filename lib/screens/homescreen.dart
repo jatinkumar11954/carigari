@@ -15,6 +15,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import './showImage.dart';
 import '../Arrangements/sizeModification.dart';
+import '../Arrangements/variables.dart'as global;
 // import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> 
 {
-  List<DocumentSnapshot> category=[];
+  // List<DocumentSnapshot> category=[];
   bool isLoading=false;
   final GlobalKey<ScaffoldState> _scaffoldkey = new GlobalKey<ScaffoldState>();
 
@@ -59,13 +60,24 @@ class _HomeScreenState extends State<HomeScreen>
     });
     QuerySnapshot qp;
     qp=await Firestore.instance.collection("category").getDocuments();
-    category.addAll(qp.documents);
+    global.category.addAll(qp.documents);
     // print(category[0].data['a']);
+    print("hai at end");
+    callTest();
     setState(() {
       isLoading=false;
     });
   }
 
+  callTest(){
+    print("in 2nd");
+    calTest();
+
+  }
+
+  calTest(){
+    print("in 3");
+  }
   // Widget CategoryData(){
   //   print("in catefory data");
   //   // CategoryData(index);
@@ -87,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen>
           enlargeCenterPage: true,
           autoPlay: true,
           pauseAutoPlayOnTouch: Duration(seconds: 5),
-          height: MediaQuery.of(context).size.height/3,
+          height: MediaQuery.of(context).size.height/4,
           items:[
               'https://www.woodenstreet.com/images/furniture-bangalore/noida/image-new3.jpg',
               'https://www.woodenstreet.com/images/furniture-bangalore/noida/image-new2.jpg',
@@ -201,26 +213,41 @@ class _HomeScreenState extends State<HomeScreen>
               
           //   },
           // ),
-          Text("\nSelect by Category",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2,color: Colors.brown),),
+          SizedBox(
+          height: MediaQuery.of(context).size.height/25,
+          width: MediaQuery.of(context).size.width/2,
+          child:Text("Select by Category",style: TextStyle(
+                            color: Colors.brown,
+                            fontWeight: FontWeight.w600,
+                            fontSize: SizeConfig.blockSizeVertical * 3.5,)),
+          ),
           Expanded(
-            child: category.length == 0
+            child: global.category.length == 0
                 ? Center(
                     child: Text('loading'),
                  )
                   : ListView.builder(
                   // controller: _scrollController,
-                  itemCount: category.length,
+                  itemCount: global.category.length,
                   itemBuilder: (context, index) {
                     return Card(child:ListTile(
                       leading: CircleAvatar(
-                        backgroundImage: NetworkImage(category[index].data['image']),
+                        backgroundImage: NetworkImage(global.category[index].data['image']),
                       ),
                       // contentPadding: EdgeInsets.all(5),
-                      title: Text(category[index].data['a']),
-                      subtitle: Text("Price Starts from ₹ "+category[index].data['price']),
+                      title: Text(global.category[index].data['a'],style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                            fontSize: SizeConfig.blockSizeVertical * 2.9,)),
+                      subtitle: Text("Price Starts from ₹ "+global.category[index].data['price']),
                       // dense: true,
                       onTap: (){
-                        Navigator.pushNamed(context,"ContactUs");
+                        // Navigator.pushNamed(context,"ContactUs");
+                        Navigator.pushNamed(context, "SubCategory");
+                        // SubCategory(index);
+                        global.TempIndex=index;
+
+                        print("clicked"+global.category[index].data['a']+global.TempIndex.toString());
                       },
                       // onLongPress: (){
                       //   //  CategoryData(index);
