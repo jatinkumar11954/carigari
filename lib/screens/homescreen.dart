@@ -58,26 +58,30 @@ class _HomeScreenState extends State<HomeScreen>
     setState(() {
       isLoading=true;
     });
+    // if(global.category==null){
+
+    // }
     QuerySnapshot qp;
     qp=await Firestore.instance.collection("category").getDocuments();
-    global.category.addAll(qp.documents);
-    // print(category[0].data['a']);
-    print("hai at end");
-    callTest();
+    global.category.isEmpty?global.category.addAll(qp.documents):null;
+    // :SizedBox();
+    print(global.category[0].data['a']);
+    // print("hai at end");
+    // callTest();
     setState(() {
       isLoading=false;
     });
   }
 
-  callTest(){
-    print("in 2nd");
-    calTest();
+  // callTest(){
+  //   print("in 2nd");
+  //   calTest();
 
-  }
+  // }
 
-  calTest(){
-    print("in 3");
-  }
+  // calTest(){
+  //   print("in 3");
+  // }
   // Widget CategoryData(){
   //   print("in catefory data");
   //   // CategoryData(index);
@@ -215,7 +219,7 @@ class _HomeScreenState extends State<HomeScreen>
           // ),
           SizedBox(
           height: MediaQuery.of(context).size.height/25,
-          width: MediaQuery.of(context).size.width/2,
+          width: MediaQuery.of(context).size.width/1.5,
           child:Text("Select by Category",style: TextStyle(
                             color: Colors.brown,
                             fontWeight: FontWeight.w600,

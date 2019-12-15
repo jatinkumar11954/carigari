@@ -127,6 +127,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
 
     ).then((user){
       Navigator.pushReplacementNamed(context, "HomeScreen");
+      
     });
 
   }

@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import '../Arrangements/variables.dart'as global;
+// import '../Arrangements/variables.dart';
 
 class SubCategory extends StatefulWidget{
   // SubCategory([int index]);
@@ -17,6 +18,8 @@ class SubCategory extends StatefulWidget{
 }
 
 class _SubCategoryState extends State<SubCategory> {
+
+  
   
   final GlobalKey<ScaffoldState> _scaffoldkey = new GlobalKey<ScaffoldState>();
 
@@ -159,29 +162,70 @@ class _SubCategoryState extends State<SubCategory> {
                             ),
                         
                           onPressed: ()async{
-                            // global.
-                            print("clicked "+global.category[global.TempIndex].data['a']);
-                            callSnackBar("Added "+global.category[global.TempIndex].data['a'] +" to the cart");
-                            // global.cart=global.category[0].data['a'];
-                            // global.CartData=
-                            // CallForAdding();
+                            print("clilcked to  add");
 
-                             Firestore.instance
-                                      .collection("cart")
-                                      .document(global.category[global.TempIndex].data['a'].toString())
-                                      .setData({
-                                        // "name":nameInput.text,
-                                        "name":global.category[global.TempIndex].data['a'].toString(),
-                                        "price":global.category[global.TempIndex].data['price'].toString(),
-                                        
-                                      })
-                                      .then((result) => {
-                                        
-                                      })
-                                  .catchError((err) => callSnackBar("Please check the details properly"));
 
-                            await Future.delayed(const Duration(seconds: 1));
+
+                          // List a=[];
+                          // global.vari
+                          global.selected.add(global.TempIndex);
+                         
+                          // print(selected);
+                          // global.selected.add(12);
+                          print(global.selected);
+                          // await Future.delayed(const Duration(seconds: 1));
                             Alerting(context);
+
+                            
+                            // Firestore.instance
+                            // .collection("selected")
+                            // .document("1")
+                            // .collection("cart")
+                            // // .add({
+                            // //   "a":global.TempIndex.toString(),
+                            // // }).catchError((err) =>print(err));
+                            // .document("cart")
+                            // // .collection("cart")
+                            // // .document(global.TempIndex.toString());
+                            // .setData({
+                            //       "name":"jp"
+
+                            // })
+                            // .then((result)=>
+                            // {
+                              
+                            // }) .catchError((err) =>print(err));
+                            // //  callSnackBar("Please check the details properly"));
+
+                            // await Future.delayed(const Duration(seconds: 1));
+                            // Alerting(context);
+                            // await Future.delayed(const Duration(seconds: 5));
+                            // Navigator.pushNamed(context,"HomeScreen");  jp
+
+
+                            // global.
+                            // print("clicked "+global.category[global.TempIndex].data['a']);
+                            // callSnackBar("Added "+global.category[global.TempIndex].data['a'] +" to the cart");
+                            // // global.cart=global.category[0].data['a'];
+                            // // global.CartData=
+                            // // CallForAdding();
+
+                            //  Firestore.instance
+                            //           .collection("cart")
+                            //           .document(global.category[global.TempIndex].data['a'].toString())
+                            //           .setData({
+                            //             // "name":nameInput.text,
+                            //             "name":global.category[global.TempIndex].data['a'].toString(),
+                            //             "price":global.category[global.TempIndex].data['price'].toString(),
+                                        
+                            //           })
+                            //           .then((result) => {
+                                        
+                            //           })
+                            //       .catchError((err) => callSnackBar("Please check the details properly"));
+
+                            // await Future.delayed(const Duration(seconds: 1));
+                            // Alerting(context);
                             // Navigator.pushNamed(context,"HomeScreen");
                           },
                             ),

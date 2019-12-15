@@ -13,23 +13,51 @@ class Cart extends StatefulWidget
 }
 
 class _CartState extends State<Cart> {
-
+  bool isLoading=false;
   @override
   void initState(){
     print("in init state");
     super.initState();
-    getCategoryList();
+    getSelectedList();
   }
 
-  getCategoryList() async{
+  // getSelectedList() async
+  // {
+
+  // }
+  getSelectedList() async{
     setState(() {
-      // isLoading=true;
+      // print(global.EmailId+global.Phone);
+      isLoading=true;
     });
+    
+    // if(global.cart.isEmpty)
+    // {
+
+    
     QuerySnapshot qp;
-    qp=await Firestore.instance.collection("cart").getDocuments();
-    global.cart.addAll(qp.documents);
+    qp=await Firestore.instance.collection("category").getDocuments();
+    print(qp);
+    print(global.selected.length);
+    for(int i=0;i<global.selected.length;i++)
+    {
+    print(global.selected[i]);
+    var te=global.selected[i];
+    global.cart.add(qp.documents[te]);
+    // global.price=global.price+int.parse(global.category[i].data['price']);
+    print(global.cart);
+
+    }
+    // print(global.cart);
+    print("outside");
+
+    setState(() {
+      isLoading=false;
+    });
     // print(category[0].data['a']);
-    print("hai at end");
+    // print("hai at end");
+    // }
+    // });
   }
 
   @override
@@ -48,24 +76,35 @@ class _CartState extends State<Cart> {
           onWillPop: (){
             Navigator.pushNamed(context, 'HomeScreen');
           },
-        child:Column(
-          children: <Widget>[
-            // Text(global.cart);
+       child:Center(
+        child:Column(children:<Widget>
+        [
+          // children: <Widget>[
+          //   // Text(global.cart);
+          //   SizedBox( height: MediaQuery.of(context).size.height/25,
+          // width: MediaQuery.of(context).size.width/1.5,
+          // child:Text("Select by Category",style: TextStyle(
+          //                   color: Colors.brown,
+          //                   fontWeight: FontWeight.w600,
+          //                   fontSize: SizeConfig.blockSizeVertical * 3.5,)),
+          // ),
              Expanded(
-            child: global.cart.length == 0
+            child: 
+            global.cart.length == 0
                 ? Center(
                     child: Text('no data'),
                  )
-                  : ListView.builder(
+                  :
+                   ListView.builder(
                   // controller: _scrollController,
                   itemCount: global.cart.length,
                   itemBuilder: (context, index) {
                     return Card(child:ListTile(
-                      // leading: CircleAvatar(
-                      //   backgroundImage: NetworkImage(global.cart[index].data['image']!=null?global.cart[index].data['image']:null),
-                      // ),
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(global.cart[index].data['image']!=null?global.cart[index].data['image']:null),
+                      ),
                       contentPadding: EdgeInsets.all(5),
-                      title: Text(global.cart[index].data['name'],style: TextStyle(
+                      title: Text(global.cart[index].data['a'],style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w600,
                             fontSize: SizeConfig.blockSizeVertical * 2.9,)),
@@ -78,43 +117,35 @@ class _CartState extends State<Cart> {
                         
                         print("clicked"+global.category[index].data['a']);
                       },
-                      // onLongPress: (){
-                      //   //  CategoryData(index);
-                      //   Navigator.pushNamed(context, "ContactForm");
-                      // },
-                      // onTap: (){
-                      //   print("clicked"+category[index].data['a']);
-                      //   // CategoryData();
-                      //   // Navigator.pushNamed(context,"CategoryData");
-                      //   // CategoryData(index);
-                      //   Navigator.pushNamed(context,"Account");
-                      //   print("clicked 2 nd tinem  "+category[index].data['a']);
-                        
-                      // },
-                      // onTap:(){
-                      //   print("clicked"+category[index].data['a']);
-                      //   msg=category[index].data['a'];
-                      //   // SubCategory(msg
-                      //   //   );
-
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => SubCategory(msg
-                      //             )
-                      //             )
-                      //             );
-                       
-                      //   },
-                      // e=category[index].data['a'],
-                      // onTap: SubCategory(category[index].data['a'],index),
-                      // subtitle: Text(category[index].data['short_desc']),
-                    ));
+                                   
+                   ));
                   },
                 ),
         ),
+        isLoading?
+        Container(
+          child: Text("Loading"),
+        ):Container(),
 
-        RaisedButton(
+       global.cart.isEmpty?
+       RaisedButton(
+                  color: Color(0xFF8BC34A),
+                  shape: RoundedRectangleBorder(
+                    borderRadius:new BorderRadius.circular(18.0),
+                    side: BorderSide(color: Colors.pink)
+                    ),
+                  child: Text("Shop Now",style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                            fontSize: SizeConfig.blockSizeVertical * 5,)
+                            ),
+                        
+                          onPressed: (){
+                            
+                            Navigator.pushNamed(context,"HomeScreen");
+                          }
+        )
+       : RaisedButton(
                   color: Color(0xFF8BC34A),
                   shape: RoundedRectangleBorder(
                     borderRadius:new BorderRadius.circular(18.0),
@@ -127,14 +158,16 @@ class _CartState extends State<Cart> {
                             ),
                         
                           onPressed: (){
-                            Navigator.pushNamed(context,"ContactForm");
+                            
+                            Navigator.pushNamed(context,"OrderConfirm");
                           }
         ),
             // Text("\n\n\n Wil be updated soon!!!",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
           ],
-        ),
+        )
         ),
       )
+    )
     );
   }
 }

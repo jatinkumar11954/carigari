@@ -9,6 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart' ;
 import 'package:flutter/material.dart' as prefix0;
+import 'package:carigari/Arrangements/variables.dart' as global;
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -162,7 +163,16 @@ class _LoginPageState extends State<LoginPage> {
                                 .document(currentUser.uid)
                                 .get()
                                 .then(
-                                  (DocumentSnapshot result) =>Navigator.pushReplacementNamed(context, "HomeScreen"),
+                                  (DocumentSnapshot result) =>
+                                  {
+
+                                  
+                                  //
+                                  Navigator.pushReplacementNamed(context, "HomeScreen"),
+                                   global.Phone=currentUser.phoneNumber,
+                                  global.EmailId=currentUser.email,
+                                  print(global.EmailId+global.Phone),
+                                  }
                                             )
                                 .catchError((err) => callSnackBar(err.toString())))
                             .catchError((err) =>callSnackBar(err.toString(),1));

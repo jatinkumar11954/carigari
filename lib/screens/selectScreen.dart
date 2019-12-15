@@ -6,6 +6,7 @@ import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter/widgets.dart';
 import '../Arrangements/sizeModification.dart';
 import 'package:carigari/screens/homescreen.dart';
+import '../Arrangements/variables.dart'as global;
 
 class SelectScreen extends StatefulWidget
 {
@@ -66,6 +67,9 @@ class _SelectScreenState extends State<SelectScreen> {
                 {
                 
                   print("jp user yes ra"),
+                  global.Phone=currentUser.phoneNumber,
+                  global.EmailId=currentUser.email,
+                  print(global.EmailId+global.Phone),
                   // Navigator.pushNamed(context, "Homescreen"),
                   Navigator.pushNamed(context,"HomeScreen"),
                   // Firestore.instance

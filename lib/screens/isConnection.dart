@@ -29,6 +29,7 @@ import './homescreen.dart';
 import './imageNoNet.dart';
 import './selectScreen.dart';
 import './Data/Register.dart';
+import '../screens/orderConfirm.dart';
 class IsConnection extends StatefulWidget {
   @override
   _IsConnection createState() => _IsConnection();
@@ -116,6 +117,8 @@ class _IsConnection extends State<IsConnection> {
         'About':(BuildContext context)=> new About(),
         'ProfileEdit':(BuildContext context) => new ProfileEdit(),
         'SubCategory':(BuildContext context) => new SubCategory(),
+        
+        'OrderConfirm':(BuildContext context) => new OrderConfirm(),
 
 
     },
