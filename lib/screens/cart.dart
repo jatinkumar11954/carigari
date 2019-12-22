@@ -101,7 +101,7 @@ class _CartState extends State<Cart> {
                   itemBuilder: (context, index) {
                     return Card(child:ListTile(
                       leading: CircleAvatar(
-                        backgroundImage: NetworkImage(global.cart[index].data['image']!=null?global.cart[index].data['image']:null),
+                        backgroundImage: NetworkImage(global.cart[index].data['image']!=null?global.cart[index].data['image']:"https://www.woodenstreet.com/images/furniture-bangalore/noida/image-new3.jpg"),
                       ),
                       contentPadding: EdgeInsets.all(5),
                       title: Text(global.cart[index].data['a'],style: TextStyle(
