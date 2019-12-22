@@ -6,7 +6,7 @@ import 'package:carigari/screens/isConnection.dart' as prefix0;
 import 'package:flutter/material.dart';
 // import './screens/homescreen.dart';
 // import './Screens/isConnection.dart';
-// import './screens/Data/CheckingData.dart';
+// import './screens/Data/CheckingData.dart';as
 // import './screens/selectScreen.dart';
 // // import './screens/Data/signIn.dart';
 // import './screens/contactUs.dart';
