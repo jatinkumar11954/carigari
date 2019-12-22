@@ -75,7 +75,8 @@ class _IsConnection extends State<IsConnection> {
              color: Colors.green,
              onPressed: ()
              {
-               IsConnection();
+              //  IsConnection();
+              Splash();
              },
                  ),
               ]

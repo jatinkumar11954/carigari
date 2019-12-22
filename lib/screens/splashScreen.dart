@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:carigari/screens/homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:splashscreen/splashscreen.dart';
@@ -40,8 +41,9 @@ class _SplashState extends State<Splash> {
                 image: Image.asset('images/logo.png'),
                 photoSize:  SizeConfig.blockSizeVertical*20.0,
                 title: Text("Welcome to Carigari World",style:TextStyle(fontSize: SizeConfig.blockSizeVertical *3.0,color:Colors.deepOrange),),
-                loaderColor: Colors.green,
-                navigateAfterSeconds: new SelectScreen(),
+                // loaderColor: Colors.green,
+                navigateAfterSeconds: new HomeScreen(),
+                //  SelectScreen(),
               ),
           new Column(
             mainAxisAlignment: MainAxisAlignment.end,
