@@ -39,11 +39,14 @@ class _CartState extends State<Cart> {
     qp=await Firestore.instance.collection("category").getDocuments();
     print(qp);
     print(global.selected.length);
-    for(int i=0;i<global.selected.length;i++)
+    print("${global.touch}this is glo touch");
+    int j=((global.selected.length-1>=0)&(global.touch==1))?global.selected.length-1:0;
+    for(int i=j;i<global.selected.length;i++)
     {
     print(global.selected[i]);
     var te=global.selected[i];
     global.cart.add(qp.documents[te]);
+    global.touch=0;
     // global.price=global.price+int.parse(global.category[i].data['price']);
     print(global.cart);
 
@@ -68,7 +71,7 @@ class _CartState extends State<Cart> {
       home: Scaffold(
         appBar: AppBar(
           title: Text("Cart Items"),
-          backgroundColor:Colors.blue,
+          backgroundColor: Colors.cyan[300],
         ),
         bottomNavigationBar: bottomnavigation(context,2),
         drawer: theDrawer(context),
@@ -98,7 +101,7 @@ class _CartState extends State<Cart> {
                    ListView.builder(
                   // controller: _scrollController,
                   itemCount: global.cart.length,
-                  itemBuilder: (context, index) {
+                  itemBuilder: (context, index) { print("executed j ${index}${global.cart.length}");
                     return Card(child:ListTile(
                       leading: CircleAvatar(
                         backgroundImage: NetworkImage(global.cart[index].data['image']!=null?global.cart[index].data['image']:"https://www.woodenstreet.com/images/furniture-bangalore/noida/image-new3.jpg"),
@@ -128,41 +131,51 @@ class _CartState extends State<Cart> {
         ):Container(),
 
        global.cart.isEmpty?
-       RaisedButton(
-                  color: Color(0xFF8BC34A),
-                  shape: RoundedRectangleBorder(
-                    borderRadius:new BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.pink)
-                    ),
-                  child: Text("Shop Now",style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: SizeConfig.blockSizeVertical * 5,)
-                            ),
-                        
-                          onPressed: (){
-                            
-                            Navigator.pushNamed(context,"HomeScreen");
-                          }
-        )
-       : RaisedButton(
-                  color: Color(0xFF8BC34A),
-                  shape: RoundedRectangleBorder(
-                    borderRadius:new BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.pink)
-                    ),
-                  child: Text("Order Now",style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: SizeConfig.blockSizeVertical * 5,)
-                            ),
-                        
-                          onPressed: (){
-                            
-                            Navigator.pushNamed(context,"OrderConfirm");
-                          }
-        ),
-            // Text("\n\n\n Wil be updated soon!!!",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
+       SizedBox(
+         height:SizeConfig.blockSizeVertical * 6,
+         width:SizeConfig.blockSizeHorizontal * 90,
+                child: RaisedButton(
+                   elevation:5.0,
+                    color: Colors.brown[400],
+                    // shape: RoundedRectangleBorder(
+                    //   borderRadius:new BorderRadius.circular(18.0),
+                    //   side: BorderSide(color: Colors.pink)
+                    //   ),
+                    child: Text("Shop Now",style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize: SizeConfig.blockSizeVertical * 4,)
+                              ),
+                          
+                            onPressed: (){
+                              
+                              Navigator.pushNamed(context,"HomeScreen");
+                            }
+          ),
+       )
+       : SizedBox(
+         height:SizeConfig.blockSizeVertical * 6,
+         width:SizeConfig.blockSizeHorizontal * 90,
+                child: RaisedButton(
+                  elevation:5.0,
+                    color: Colors.brown[400],
+                    // shape: RoundedRectangleBorder(
+                    //   borderRadius:new BorderRadius.circular(18.0),
+                    //   side: BorderSide(color: Colors.pink)
+                    //   ),
+                    child: Text("Order Now",style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize: SizeConfig.blockSizeVertical * 4,)
+                              ),
+                          
+                            onPressed: (){
+                              
+                              Navigator.pushNamed(context,"OrderConfirm");
+                            }
+          ),
+       ),
+          SizedBox(height:SizeConfig.blockSizeVertical * 2,)  // Text("\n\n\n Wil be updated soon!!!",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
           ],
         )
         ),

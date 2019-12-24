@@ -6,6 +6,7 @@ final TextEditingController OtpEntered =new TextEditingController();
 final TextEditingController MobileNumber =new TextEditingController();
 bool isLogged=false;
 String token="r";
+int touch=0;
 var UserName="NoName";
 var EmailId="No Mailid";
 var Phone;

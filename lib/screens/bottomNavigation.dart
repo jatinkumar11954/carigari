@@ -5,6 +5,8 @@ Widget bottomnavigation(BuildContext context,int index) {
 
  
       return BottomNavigationBar(
+        backgroundColor:Color.fromRGBO(255,216,180,.8),
+        elevation: 1.0,
         onTap:(index)
            {
              switch(index)

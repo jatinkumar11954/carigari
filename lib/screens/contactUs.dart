@@ -18,7 +18,7 @@ class _ContactUsState extends State<ContactUs> {
       home: new Scaffold(
         appBar: new AppBar(
           title: new Text("Contact Us",style:TextStyle(color: Colors.black)),
-          backgroundColor: Colors.orange[300],
+          backgroundColor: Color.fromRGBO(255,216,180,.9),
         ),
         bottomNavigationBar: bottomnavigation(context,1),
         drawer: theDrawer(context),
@@ -57,27 +57,42 @@ class _ContactUsState extends State<ContactUs> {
           //     )
           //   ]
           // ),
+           
+                
           Text("\n\n\n"),
+
            Padding(
              padding: EdgeInsets.only(left: SizeConfig.blockSizeVertical*2.5,right:SizeConfig.blockSizeVertical*1.5 ),
-           child: new FlatButton(
+           child: new SizedBox(
+         height:SizeConfig.blockSizeVertical * 6,
+         width:SizeConfig.blockSizeHorizontal * 80,
+         child:RaisedButton(
              onPressed: () => launch("tel:+919010590693"),
-              child: new Text("call me"),
+              child: new Text("CALL US",style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize: SizeConfig.blockSizeVertical * 3,)),
               color: Colors.blue,
               ),
-           ),
+           ),),
          Text("\n\n\n"),
               
           //     child: new Text("Call me")),
            Padding(
              padding: EdgeInsets.only(left: SizeConfig.blockSizeVertical*2.5,right:SizeConfig.blockSizeVertical*1.5 ),
-          child:new FlatButton(
+          child: new SizedBox(
+         height:SizeConfig.blockSizeVertical * 6,
+         width:SizeConfig.blockSizeHorizontal * 80,
+         child:RaisedButton(
               onPressed: () async =>
               //  var whatsappUrl ="whatsapp://send?phone=$phone";
             await canLaunch("whatsapp://send?phone=0919010590693")? launch("whatsapp://send?phone=0919010590693"):print("open whatsapp app link or do a snackbar with notification that there is no whatsapp installed"),
 
-              child: new Text("Live chat (whatsApp)"),
-              color: Colors.pinkAccent,),
+              child: new Text("Live chat (whatsApp)",style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize: SizeConfig.blockSizeVertical * 3,)),
+              color: Colors.pinkAccent,),),
            ),
           ],
     ),

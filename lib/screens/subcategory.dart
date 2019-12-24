@@ -96,8 +96,8 @@ class _SubCategoryState extends State<SubCategory> {
     return Scaffold(
       key: _scaffoldkey,
       appBar: new AppBar(
-        backgroundColor: Color(0XFFFFAB00),
-        title: new Text(global.category[0].data['a']),
+        backgroundColor: Colors.cyan[300],
+        title: new Text(global.category[global.TempIndex].data['a']),
       ),
       drawer: theDrawer(context),
       bottomNavigationBar: bottomnavigation(context, 2),
@@ -106,17 +106,17 @@ class _SubCategoryState extends State<SubCategory> {
         {
           Navigator.pushNamed(context,"HomeScreen");
         },
-        child: ListView(
-          children: <Widget>[
+        child:
             // Text(global.category[0].data['a']),
             // Text("\n"),
             Padding(
-              padding: EdgeInsets.only(top: 10.0),
-            ),
+              padding: EdgeInsets.only(top: 10.0,left:10.0,right:9.0),
+            child: ListView(
+          children: <Widget>[
             SizedBox(
               height: MediaQuery.of(context).size.height/10,
-              width: MediaQuery.of(context).size.width*1,
-              child:Text("  Product Description for "+global.category[global.TempIndex].data['a'],style: TextStyle(
+              width: SizeConfig.blockSizeVertical * 85,
+              child:Text("\t\t\tProduct Description for "+global.category[global.TempIndex].data['a'],style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w600,
                             fontSize: SizeConfig.blockSizeVertical * 2.9,
@@ -128,7 +128,7 @@ class _SubCategoryState extends State<SubCategory> {
               child: Image.network(global.category[global.TempIndex].data['image']),
             ),Divider(),
             // Image.network(global.category[0].data['image']),
-            Text("Price:  ₹ "+global.category[global.TempIndex].data['price'],style: TextStyle(
+            Text("\t\t\tPrice:  ₹ "+global.category[global.TempIndex].data['price'],style: TextStyle(
                             color: Colors.pink,
                             fontWeight: FontWeight.w600,
                             fontSize: SizeConfig.blockSizeVertical * 2.9,)
@@ -137,29 +137,48 @@ class _SubCategoryState extends State<SubCategory> {
               SizedBox(
               
               height: MediaQuery.of(context).size.height/15,
-              child: Text("Description:     .....",style: TextStyle(
+              child: Text("\t\t\tDescription:     .....",style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w600,
                             fontSize: SizeConfig.blockSizeVertical * 2.9,)),
 
 
-              ),    
-              Divider(),     
-            SizedBox(
+              ), 
+              SizedBox(
               
-              height: MediaQuery.of(context).size.height/10,
-              child: Center(
-                child: RaisedButton(
-                  color: Color(0xFF8BC34A),
-                  shape: RoundedRectangleBorder(
-                    borderRadius:new BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.pink)
-                    ),
-                  child: Text("Add +",style: TextStyle(
+              height: MediaQuery.of(context).size.height/15,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text("\t\t\t[Delevery Charges:extra",style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: SizeConfig.blockSizeVertical * 2.2,)),
+                                Text("\t\t\tGST:18% extra]",style: TextStyle(
                             color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: SizeConfig.blockSizeVertical * 5,)
-                            ),
+                            fontWeight: FontWeight.w400,
+                            fontSize: SizeConfig.blockSizeVertical * 2.2,)),
+                ],
+              ),
+
+
+              ),
+             
+
+              Divider(),     
+           SizedBox(
+         height:SizeConfig.blockSizeVertical * 6,
+         width:SizeConfig.blockSizeHorizontal * 50,
+                child: RaisedButton(
+                  elevation:5.0,
+                    color: Colors.brown[400],
+                  child: Text("Add +",style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize: SizeConfig.blockSizeVertical * 4,)
+                              ),
+                          
                         
                           onPressed: ()async{
                             print("clilcked to  add");
@@ -169,10 +188,11 @@ class _SubCategoryState extends State<SubCategory> {
                           // List a=[];
                           // global.vari
                           global.selected.add(global.TempIndex);
+                          global.touch=1;
                          
                           // print(selected);
                           // global.selected.add(12);
-                          print(global.selected);
+                          print("${global.selected}this is selected lenght");
                           // await Future.delayed(const Duration(seconds: 1));
                             Alerting(context);
 
@@ -229,11 +249,11 @@ class _SubCategoryState extends State<SubCategory> {
                             // Navigator.pushNamed(context,"HomeScreen");
                           },
                             ),
-              ),
-            )
+              
+            ),
           ],
           // child: Text(global.category[0].data['a']),
-        ),
+        ),),
       ),
     );
   }

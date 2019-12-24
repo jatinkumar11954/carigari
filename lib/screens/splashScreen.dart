@@ -37,10 +37,10 @@ class _SplashState extends State<Splash> {
         children: <Widget>[
             new SplashScreen(
                 seconds: 1,
-                backgroundColor: Colors.brown,
+                backgroundColor: Colors.brown[300],
                 image: Image.asset('images/logo.png'),
                 photoSize:  SizeConfig.blockSizeVertical*20.0,
-                title: Text("Welcome to Carigari World",style:TextStyle(fontSize: SizeConfig.blockSizeVertical *3.0,color:Colors.deepOrange),),
+                title: Text("Welcome to the World",style:TextStyle(fontSize: SizeConfig.blockSizeVertical *3.0,color:Colors.deepOrange),),
                 // loaderColor: Colors.green,
                 navigateAfterSeconds: new HomeScreen(),
                 //  SelectScreen(),

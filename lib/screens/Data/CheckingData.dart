@@ -23,7 +23,8 @@ class _CheckData extends State<CheckData>{
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(title: Text("Carigiri Furnitures"),),
+        appBar: AppBar(
+           backgroundColor: Colors.cyan[300],title: Text("Carigiri Furnitures"),),
         body:WillPopScope(
           onWillPop: (){
             //write smtg

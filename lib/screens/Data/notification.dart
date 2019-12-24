@@ -19,7 +19,7 @@ class _NotificationState extends State<Notification> {
       home: Scaffold(
         appBar: AppBar(
           title: Text("Notifications",style: TextStyle(color: Colors.black),),
-          backgroundColor:Colors.orange[300],
+          backgroundColor: Colors.cyan[300],
         ),
         bottomNavigationBar: bottomnavigation(context,1),
         drawer: theDrawer(context),
@@ -29,7 +29,7 @@ class _NotificationState extends State<Notification> {
           },
         child:Column(
           children: <Widget>[
-            Text("\n\n\n No Notifications till now",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
+            Text("\n\n\n\t\t\t\t No Notifications till now",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
           ],
         ),
         ),

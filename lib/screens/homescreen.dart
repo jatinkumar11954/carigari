@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   Widget CarouselImages(){
     return new Container(
-        color: Colors.green,
+        color: Colors.white,
         child: new CarouselSlider(
           enlargeCenterPage: true,
           autoPlay: true,
@@ -176,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen>
     return new Scaffold(
       key: _scaffoldkey,
       appBar: new AppBar(
-        backgroundColor: Color(0XFF00099a9),
+        backgroundColor: Colors.cyan[300],
         title: new Text('Carigiri Furnitures'),
       ),
       drawer: theDrawer(context),
@@ -188,144 +188,153 @@ class _HomeScreenState extends State<HomeScreen>
         show();
       },
       child:Center(
-        child:Column(children:<Widget>
-        [
-          CarouselImages(),
-          //  ShowImage("logo"),
-           
-          
-          //  Text("About\n",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5),),
-          //   InkWell(
-          //           child: new Text('About Carigari Furnitures',style:TextStyle(fontSize: 20.0,color: Colors.red, decoration: TextDecoration.underline)),
-          //       onTap: () async {
-          //   if (await canLaunch("http://www.carigarifurniture.com//")) {
-          //     await launch("http://www.carigarifurniture.com//");
-          //   }
-          //       }
+        child:Container(
+           color:Color.fromRGBO(255,216,180,.1),
+          child: Column(
+            children:<Widget>
+          [
+            CarouselImages(),
+            //  ShowImage("logo"),
+             
+            
+            //  Text("About\n",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5),),
+            //   InkWell(
+            //           child: new Text('About Carigari Furnitures',style:TextStyle(fontSize: 20.0,color: Colors.red, decoration: TextDecoration.underline)),
+            //       onTap: () async {
+            //   if (await canLaunch("http://www.carigarifurniture.com//")) {
+            //     await launch("http://www.carigarifurniture.com//");
+            //   }
+            //       }
+                  
+            //       // launch("https://in.linkedin.com/in/jaya-prakash-veldanda-756b48179"),
+            //     ),
+            //  CallForcategoryDetails(),
+            //   Text("\n\n"),
+            //      RaisedButton(
+            //     color: Colors.orange,
+            //   child: Text("Subscription"),
+            //   onPressed: ()
+            //   {
+            //     // show();
+            //     Navigator.pushNamed(context, 'Testing');
                 
-          //       // launch("https://in.linkedin.com/in/jaya-prakash-veldanda-756b48179"),
-          //     ),
-          //  CallForcategoryDetails(),
-          //   Text("\n\n"),
-          //      RaisedButton(
-          //     color: Colors.orange,
-          //   child: Text("Subscription"),
-          //   onPressed: ()
-          //   {
-          //     // show();
-          //     Navigator.pushNamed(context, 'Testing');
-              
-          //   },
-          // ),
-          SizedBox(
-          height: MediaQuery.of(context).size.height/25,
-          width: MediaQuery.of(context).size.width/1.5,
-          child:Text("Select by Category",style: TextStyle(
-                            color: Colors.brown,
-                            fontWeight: FontWeight.w600,
-                            fontSize: SizeConfig.blockSizeVertical * 3.5,)),
-          ),
-          Expanded(
-            child: global.category.length == 0
-                ? Center(
-                    child: Text('loading'),
-                 )
-                  : ListView.builder(
-                  // controller: _scrollController,
-                  itemCount: global.category.length,
-                  itemBuilder: (context, index) {
-                    return Card(child:ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: NetworkImage(global.category[index].data['image']),
-                      ),
-                      // contentPadding: EdgeInsets.all(5),
-                      title: Text(global.category[index].data['a'],style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: SizeConfig.blockSizeVertical * 2.9,)),
-                      subtitle: Text("Price Starts from ₹ "+global.category[index].data['price']),
-                      // dense: true,
-                      onTap: (){
-                        // Navigator.pushNamed(context,"ContactUs");
-                        Navigator.pushNamed(context, "SubCategory");
-                        // SubCategory(index);
-                        global.TempIndex=index;
+            //   },
+            // ),
+            SizedBox(
+            height: MediaQuery.of(context).size.height/25,
+            width: MediaQuery.of(context).size.width/1.5,
+            child:Text("Select by Category",style: TextStyle(
+                              color: Colors.brown,
+                              fontWeight: FontWeight.w600,
+                              fontSize: SizeConfig.blockSizeVertical * 3.5,)),
+            ),
+            Expanded(
+              child: global.category.length == 0
+                  ? Center(
+                      child: Text('loading'),
+                   )
+                    : Container(
+                      color:Color.fromRGBO(255,216,180,.6),
+                      child: ListView.builder(
+                      // controller: _scrollController,
+                      itemCount: global.category.length,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          color:Colors.cyan[100],
+                          child:ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage: NetworkImage(global.category[index].data['image']),
+                          ),
+                          // contentPadding: EdgeInsets.all(5),
+                          title: Text(global.category[index].data['a'],style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                                fontSize: SizeConfig.blockSizeVertical * 2.9,)),
+                          subtitle: Text("Price Starts from ₹ "+global.category[index].data['price']),
+                          // dense: true,
+                          onTap: (){
+                            // Navigator.pushNamed(context,"ContactUs");
+                            Navigator.pushNamed(context, "SubCategory");
+                            // SubCategory(index);
+                            global.TempIndex=index;
 
-                        print("clicked"+global.category[index].data['a']+global.TempIndex.toString());
+                            print("clicked"+global.category[index].data['a']+global.TempIndex.toString());
+                          },
+                          // onLongPress: (){
+                          //   //  CategoryData(index);
+                          //   Navigator.pushNamed(context, "ContactForm");
+                          // },
+                          // onTap: (){
+                          //   print("clicked"+category[index].data['a']);
+                          //   // CategoryData();
+                          //   // Navigator.pushNamed(context,"CategoryData");
+                          //   // CategoryData(index);
+                          //   Navigator.pushNamed(context,"Account");
+                          //   print("clicked 2 nd tinem  "+category[index].data['a']);
+                            
+                          // },
+                          // onTap:(){
+                          //   print("clicked"+category[index].data['a']);
+                          //   msg=category[index].data['a'];
+                          //   // SubCategory(msg
+                          //   //   );
+
+                          //   Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => SubCategory(msg
+                          //             )
+                          //             )
+                          //             );
+                           
+                          //   },
+                          // e=category[index].data['a'],
+                          // onTap: SubCategory(category[index].data['a'],index),
+                          // subtitle: Text(category[index].data['short_desc']),
+                        ));
                       },
-                      // onLongPress: (){
-                      //   //  CategoryData(index);
-                      //   Navigator.pushNamed(context, "ContactForm");
-                      // },
-                      // onTap: (){
-                      //   print("clicked"+category[index].data['a']);
-                      //   // CategoryData();
-                      //   // Navigator.pushNamed(context,"CategoryData");
-                      //   // CategoryData(index);
-                      //   Navigator.pushNamed(context,"Account");
-                      //   print("clicked 2 nd tinem  "+category[index].data['a']);
-                        
-                      // },
-                      // onTap:(){
-                      //   print("clicked"+category[index].data['a']);
-                      //   msg=category[index].data['a'];
-                      //   // SubCategory(msg
-                      //   //   );
+                  ),
+                    ),
+          ),
+          isLoading
+              ? Container(
+                child: Text("Loading"),
+                  // width: MediaQuery.of(context).size.width,
+                  // padding: EdgeInsets.all(5),
+                  // color: Colors.yellowAccent,
+                  // child: Text(
+                  //   'Loading',
+                  //   textAlign: TextAlign.center,
+                  //   style: TextStyle(
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
+                )
+              : Container()
 
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => SubCategory(msg
-                      //             )
-                      //             )
-                      //             );
-                       
-                      //   },
-                      // e=category[index].data['a'],
-                      // onTap: SubCategory(category[index].data['a'],index),
-                      // subtitle: Text(category[index].data['short_desc']),
-                    ));
-                  },
-                ),
-        ),
-        isLoading
-            ? Container(
-              child: Text("Loading"),
-                // width: MediaQuery.of(context).size.width,
-                // padding: EdgeInsets.all(5),
-                // color: Colors.yellowAccent,
-                // child: Text(
-                //   'Loading',
-                //   textAlign: TextAlign.center,
-                //   style: TextStyle(
-                //     fontWeight: FontWeight.bold,
-                //   ),
-                // ),
-              )
-            : Container()
-
-          
-        //   Column(children:<Widget>
-        //   [
-        //     Expanded(child:category.length==0?
-        //     Center(
-        //       child:Text("data"),
-        //     )
-        //     :
-        //     ListView.builder(
-        //       itemCount: category.length,
-        //       itemBuilder: (context,index){
-        //         return ListTile(
-        //           title: Text(category[index].data['a']),
-        //         );
-        //       },
-        //     ),
-        //     // isLoading?Text("Loading"):Container()
-        //     ),
-        //   ]
-        // ),
+            
+          //   Column(children:<Widget>
+          //   [
+          //     Expanded(child:category.length==0?
+          //     Center(
+          //       child:Text("data"),
+          //     )
+          //     :
+          //     ListView.builder(
+          //       itemCount: category.length,
+          //       itemBuilder: (context,index){
+          //         return ListTile(
+          //           title: Text(category[index].data['a']),
+          //         );
+          //       },
+          //     ),
+          //     // isLoading?Text("Loading"):Container()
+          //     ),
+          //   ]
+          // ),
    
-        ]
+          ]
+          ),
         ),
       ), 
     ),

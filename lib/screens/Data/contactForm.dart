@@ -69,7 +69,7 @@ class _ContactFormState extends State<ContactForm> {
           // resizeToAvoidBottomPadding: false,
                   appBar: AppBar(
                     title: Text("Contact Form"),
-                    backgroundColor: Colors.green,
+                     backgroundColor: Colors.cyan[300],
                   ),
                   drawer: theDrawer(context),
                   bottomNavigationBar: bottomnavigation(context,1),

@@ -19,7 +19,7 @@ class _HelpState extends State<Help> {
       home: Scaffold(
         appBar: AppBar(
           title: Text("Information"),
-          backgroundColor:Colors.orange[300],
+           backgroundColor: Colors.cyan[300],
         ),
         bottomNavigationBar: bottomnavigation(context,1),
         drawer: theDrawer(context),
@@ -29,7 +29,7 @@ class _HelpState extends State<Help> {
           },
         child:Column(
           children: <Widget>[
-            Text("\n\n\n Information need to be updated",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
+            Text("\n\n\n\t\t\t Information need to be updated",style: TextStyle(fontSize:SizeConfig.blockSizeVertical * 2.5,color: Colors.green),),
           ],
         ),
         ),

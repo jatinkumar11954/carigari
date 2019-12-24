@@ -10,6 +10,7 @@ class CategoryData extends StatelessWidget
     // TODO: implement build
     return Scaffold(
       appBar: new AppBar(
+         backgroundColor: Colors.cyan[300],
         title: Text("data"),
       ),
       body: Container(

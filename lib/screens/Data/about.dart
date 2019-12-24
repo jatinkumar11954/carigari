@@ -17,6 +17,7 @@ class _AboutState extends State<About> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+         backgroundColor: Colors.cyan[300],
         title: Text("About"),
       ),
     bottomNavigationBar: bottomnavigation(context, 1),
